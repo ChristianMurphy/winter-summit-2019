@@ -8,12 +8,26 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+
+   <style>
+    #unicon-hq {
+      width: 100%;
+    }
+    #conference-map {
+      height: 600px;
+    }
+   </style>
+
     <title>uPortal Winter Summit 2019</title>
   </head>
   <body>
     <nav id="navbar-ws2019" class="navbar navbar-dark bg-dark sticky-top">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <ul class="nav nav-pills">
+      <a class="navbar-brand" href="#">uPortal Winter Summit 2019</a>
+      <ul class="nav">
         <li class="nav-item">
           <a class="nav-link" href="#about">About</a>
         </li>
@@ -25,19 +39,38 @@
         </li>
       </ul>
     </nav>
-    <div data-spy="scroll" data-target="#navbar-ws2019">
+    <div data-spy="scroll" data-target="#navbar-ws2019" class="container">
       <h2 id="about">About</h2>
       <p>...</p>
       <h2 id="location">Location</h2>
-      <p>...</p>
+      <p>
+        <img id="unicon-hq" src="unicon-hq.jpg" alt="Unicon Head Quarters"/>
+        <div id="conference-map"></div>
+      </p>
       <h2 id="getting-in">Getting In</h2>
       <p>...</p>
     </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous" defer></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous" defer></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+   <script>
+     var conferenceMap = L.map('conference-map').setView([33.3002, -111.7495], 15);
+
+     // add open streetmap tiles
+     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    	maxZoom: 19,
+    	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(conferenceMap);
+
+    //
+    var uniconHq = L.marker([33.2963468, -111.7523424]).bindPopup("Unicon HQ").addTo(conferenceMap);
+
+   </script>
   </body>
 </html>
