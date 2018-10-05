@@ -65,7 +65,7 @@
    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
    crossorigin=""></script>
    <script>
-     var conferenceMap = L.map('ws2019-conference-map').setView([33.3002, -111.7495], 15);
+     var conferenceMap = L.map('ws2019-conference-map').setView([33.29545, -111.75269], 16);
 
      // add open streetmap tiles
      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -73,8 +73,14 @@
     	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(conferenceMap);
 
-    //
-    var uniconHq = L.marker([33.2963468, -111.7523424]).bindPopup("<img id='ws2019-map-image' src='unicon-hq.jpg' alt='Unicon Head Quarters'/><br/><h6>Unicon HQ</h6><address>1760 E Pecos Rd, Gilbert, AZ 85295</address>").addTo(conferenceMap).openPopup();
+    // Unicon HQ marker
+    var uniconHQIcon = L.icon({iconUrl: 'img/building.svg', iconSize: [25, 25], iconAnchor: [12, 12], popupAnchor: [0, -12]});
+    var uniconHq = L.marker([33.2963468, -111.7523424], {icon: uniconHQIcon}).bindPopup("<img id='ws2019-map-image' src='img/unicon-hq.jpg' alt='Unicon Head Quarters'/><br/><h6>Unicon HQ</h6><address>1760 E Pecos Rd, Gilbert, AZ 85295</address>").addTo(conferenceMap).openPopup();
+
+
+    var hotelIcon = L.icon({iconUrl: 'img/hotel.svg', iconSize: [25, 25], iconAnchor: [12, 12], popupAnchor: [0, -12]});
+    var hamptonInn = L.marker([33.29159, -111.75215], {icon: hotelIcon}).bindPopup("<img id='ws2019-map-image' src='https://images.trvl-media.com/hotels/3000000/2740000/2733300/2733240/2733240_182_z.jpg' alt='Hampton Inn and Suites'/><br/><h6><a href='https://hamptoninn3.hilton.com/en/hotels/arizona/hampton-inn-and-suites-phoenix-gilbert-PHXGTHX/index.html' target='_blank'>Hampton Inn & Suites</a></h6>").addTo(conferenceMap);
+    var hyattPlace = L.marker([33.29144, -111.75272], {icon: hotelIcon}).bindPopup("<img id='ws2019-map-image' src='https://images.trvl-media.com/hotels/3000000/2670000/2668100/2668054/f2e5ac56_z.jpg' alt='Hyatt Place'/><br/><h6><a href='https://images.trvl-media.com/hotels/3000000/2670000/2668100/2668054/f2e5ac56_z.jpg' target='_blank'>Hyatt Place Gilbert</a></h6>").addTo(conferenceMap);
    </script>
   </body>
 </html>
